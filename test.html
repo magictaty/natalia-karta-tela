@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Где я теряю опору? — 5-минутная самодиагностика</title>
+<meta name="description" content="12 коротких утверждений о привычных реакциях. Результат — сразу на экране, без регистрации и без сбора персональных данных.">
+<style>
+  :root{
+    --paper:#F7F4EF;
+    --card:#FFFFFF;
+    --ink:#2E2A26;
+    --muted:#6F6862;
+    --line:#E4DED5;
+    --accent:#8A6F5A;
+    --accent-soft:#EFE7DE;
+    --track:#EAE3D9;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:680px;margin:0 auto;padding:28px 20px 64px}
+  h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:600;letter-spacing:-.01em;margin:0}
+  h1{font-size:30px;line-height:1.25}
+  h2{font-size:23px;line-height:1.3}
+  h3{font-size:19px;line-height:1.35}
+  p{margin:0 0 14px}
+  .lead{color:var(--muted);font-size:17px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;margin:0 0 18px}
+  .btn{
+    display:inline-block;width:100%;text-align:center;
+    background:var(--accent);color:#fff;border:0;border-radius:12px;
+    padding:16px 20px;font-size:17px;font-family:inherit;cursor:pointer;
+    transition:background .15s ease;
+  }
+  .btn:hover{background:#765D4B}
+  .btn:disabled{background:#C9BFB4;cursor:default}
+  .btn-ghost{
+    display:inline-block;background:transparent;color:var(--accent);
+    border:1px solid var(--accent);border-radius:12px;
+    padding:12px 18px;font-size:16px;font-family:inherit;cursor:pointer;text-decoration:none;
+  }
+  .btn-ghost:hover{background:var(--accent-soft)}
+  .btn-link{background:none;border:0;color:var(--muted);font-family:inherit;font-size:15px;cursor:pointer;text-decoration:underline;padding:8px 0}
+  .kicker{font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);margin:0 0 12px;font-weight:600}
+  .meta{font-size:14px;color:var(--muted)}
+  .progress{height:4px;background:var(--track);border-radius:99px;overflow:hidden;margin:0 0 10px}
+  .progress > i{display:block;height:100%;background:var(--accent);border-radius:99px;transition:width .25s ease}
+  .counter{font-size:14px;color:var(--muted);margin:0 0 22px}
+  .q{font-size:22px;line-height:1.4;font-family:Georgia,serif;margin:0 0 22px;min-height:96px}
+  .answers{display:grid;gap:10px}
+  .ans{
+    text-align:left;background:#fff;border:1px solid var(--line);border-radius:12px;
+    padding:15px 16px;font-size:17px;font-family:inherit;color:var(--ink);cursor:pointer;
+    display:flex;align-items:center;gap:14px;transition:border-color .12s ease,background .12s ease;
+  }
+  .ans:hover{border-color:var(--accent);background:#FDFAF6}
+  .ans.sel{border-color:var(--accent);background:var(--accent-soft)}
+  .ans b{
+    flex:0 0 30px;height:30px;border-radius:50%;background:var(--track);
+    display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:var(--muted)
+  }
+  .ans.sel b{background:var(--accent);color:#fff}
+  .navrow{display:flex;gap:12px;align-items:center;margin-top:22px}
+  .lines{display:grid;gap:14px;margin:6px 0 24px}
+  .line-row{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:center}
+  .line-row span:first-child{font-size:15px}
+  .line-row .val{font-size:15px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .bar{grid-column:1/-1;height:8px;background:var(--track);border-radius:99px;overflow:hidden}
+  .bar > i{display:block;height:100%;background:var(--accent);border-radius:99px;transition:width .5s ease}
+  .line-row.strong .bar > i{background:#9FB39A}
+  ol.steps{padding-left:22px;margin:0 0 18px}
+  ol.steps li{margin:0 0 10px}
+  .res-title{font-family:Georgia,serif;font-size:26px;line-height:1.3;margin:0 0 8px}
+  .tag{display:inline-block;font-size:13px;background:var(--accent-soft);color:#6B5444;border-radius:99px;padding:5px 12px;margin:0 0 14px}
+  .divider{height:1px;background:var(--line);margin:22px 0}
+  .footer{font-size:13px;color:var(--muted);line-height:1.55}
+  .footer a{color:var(--muted)}
+  .hide{display:none!important}
+  .res-head{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 6px}
+  @media (max-width:420px){
+    h1{font-size:26px}
+    .q{font-size:20px;min-height:0}
+    .card{padding:20px}
+  }
+  @media print{
+    body{background:#fff}
+    .no-print{display:none!important}
+    .card{border:0;padding:0;margin:0 0 16px}
+    .wrap{max-width:none;padding:0}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ЭКРАН 1: обложка -->
+  <section id="screen-start">
+    <p class="kicker">Самодиагностика</p>
+    <h1>Где я теряю опору?</h1>
+    <p class="lead" style="margin-top:10px">5-минутная самодиагностика привычных реакций</p>
+
+    <div class="card">
+      <p>12 коротких утверждений о том, как вы обычно справляетесь с собой, с людьми и с нагрузкой.
+         Отметьте, как часто так бывает у вас <b>в последние 2–3 месяца</b>.</p>
+      <p class="meta">Правильных ответов нет. Это не диагноз и не тест на расстройство — это
+         способ посмотреть на привычки, которые обычно не замечаешь.</p>
+      <p class="meta" style="margin-bottom:0">Ответы остаются в вашем браузере: мы не спрашиваем
+         имя, телефон и почту и ничего не сохраняем на сервере.</p>
+    </div>
+
+    <button class="btn" id="btn-start">Начать — 4–6 минут</button>
+    <p class="footer" style="margin-top:16px">Нажимая «Начать», вы соглашаетесь только с тем, что
+      результат остаётся у вас на экране. Персональные данные не собираются.</p>
+  </section>
+
+  <!-- ЭКРАН 2: вопросы -->
+  <section id="screen-quiz" class="hide">
+    <div class="progress"><i id="bar" style="width:0%"></i></div>
+    <p class="counter" id="counter">1 / 12</p>
+    <p class="q" id="qtext">…</p>
+    <div class="answers" id="answers"></div>
+    <div class="navrow">
+      <button class="btn-link no-print" id="btn-back">← назад</button>
+    </div>
+  </section>
+
+  <!-- ЭКРАН 3: результат -->
+  <section id="screen-result" class="hide">
+    <p class="kicker no-print">Ваш результат</p>
+    <p class="res-title" id="res-name">…</p>
+    <p class="lead" id="res-sub" style="margin-bottom:18px"></p>
+
+    <div class="card no-print">
+      <h3 style="margin-bottom:14px">Ваши баллы по четырём линиям</h3>
+      <div class="lines" id="lines"></div>
+      <p class="meta" id="res-note" style="margin-bottom:0"></p>
+    </div>
+
+    <div class="card">
+      <span class="tag" id="res-tag">ваша главная точка</span>
+      <div id="res-body"></div>
+    </div>
+
+    <div class="card" id="res-cta-card">
+      <h3 style="margin-bottom:10px">Следующий шаг — если откликается</h3>
+      <p id="res-cta-text"></p>
+      <p style="margin-bottom:18px"><a class="btn-ghost no-print" href="https://nataliakalininskaya.taplink.ws" target="_blank" rel="noopener" id="res-cta-link">Посмотреть варианты →</a></p>
+      <p class="meta" style="margin-bottom:0">Прямо сейчас ничего решать не нужно. Ответы — ваши;
+         их не видит никто, кроме вас.</p>
+    </div>
+
+    <div class="navrow no-print">
+      <button class="btn-ghost" id="btn-print" style="flex:1">Сохранить в PDF</button>
+      <button class="btn-link" id="btn-restart">пройти заново</button>
+    </div>
+
+    <div class="divider"></div>
+    <p class="footer">
+      Это самонаблюдение, а не медицинская или психологическая диагностика. Тест не ставит диагноз
+      и не заменяет консультацию специалиста. Если вы сейчас в трудном состоянии, обратитесь
+      к психологу или врачу — и, при необходимости, к экстренной помощи.
+      <span class="no-print"><br>Черновик для согласования · данные оператора персональных данных
+      ещё не заполнены.</span>
+    </p>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  // ---------------------------------------------------------------- вопросы
+  // 4 линии: T — тело как сигнал, X — своё «хочу», G — границы и «нет», O — опора на другого
+  var QUESTIONS = [
+    {line:"T", text:"Я узнаю о своей усталости только когда «падаю» или заболеваю."},
+    {line:"X", text:"На вопрос «чего ты хочешь?» мне проще ответить, чего я не хочу."},
+    {line:"G", text:"Я соглашаюсь на то, что мне не подходит, чтобы не расстраивать человека."},
+    {line:"O", text:"Мне проще всё сделать самой, чем доверить и ждать."},
+    {line:"T", text:"Я замечаю напряжение в теле (плечи, челюсть, живот) уже после того, как оно накопилось."},
+    {line:"X", text:"Я выбираю то, что удобно другим, и только потом думаю о себе."},
+    {line:"G", text:"Я долго прокручиваю в голове разговор, где собиралась отказать."},
+    {line:"O", text:"Когда мне плохо, я никому не звоню и переживаю это одна."},
+    {line:"T", text:"Мне трудно остановиться и отдохнуть, пока дело не сделано."},
+    {line:"X", text:"Мне неловко просить о помощи или о своём."},
+    {line:"G", text:"После общения, где я уступила, я злюсь — на себя или на другого."},
+    {line:"O", text:"Мне трудно принимать поддержку: кажется, что я должна «отработать»."}
+  ];
+
+  var SCALE = [
+    {v:0, label:"Почти никогда"},
+    {v:1, label:"Редко"},
+    {v:2, label:"Часто"},
+    {v:3, label:"Почти всегда"}
+  ];
+
+  var LINE_NAMES = {T:"Тело как сигнал", X:"Своё «хочу»", G:"Границы и «нет»", O:"Опора на другого"};
+
+  // ---------------------------------------------------------------- профили
+  var PROFILES = {
+    T:{
+      name:"«Держусь на характере»",
+      tag:"ваша главная точка потери опоры — тело как сигнал",
+      sub:"Вы узнаёте о своём состоянии последним — и восстанавливаетесь уже после перегрузки.",
+      body:
+        "<p>Похоже, вы из тех, кто узнаёт о своём состоянии последним. Не потому, что не чувствуете, "+
+        "а потому, что привыкли считать сигналы помехой: сначала дела, потом усталость. Так тело "+
+        "превращается из источника информации в источник проблем — оно сообщает о перегрузке, когда "+
+        "перегрузка уже случилась.</p>"+
+        "<p>Что здесь обычно происходит: вы умеете терпеть. Это навык, и он вас много раз выручал. "+
+        "Обратная сторона — вы не успеваете заметить, что вам подходит и чего вы не хотите, пока не "+
+        "станет слишком поздно и придётся восстанавливаться, а не выбирать.</p>"+
+        "<h3 style=\"margin:20px 0 12px\">С чего начать — 3 шага, без героизма</h3>"+
+        "<ol class=\"steps\">"+
+        "<li><b>30 секунд в день:</b> где сейчас напряжение — плечи, челюсть, живот, дыхание. Не менять, просто отметить.</li>"+
+        "<li><b>Один «стоп» в день</b> до того, как закончите дело, а не после.</li>"+
+        "<li><b>Три слова</b> о своём состоянии — конкретных, вместо «нормально».</li>"+
+        "</ol>"+
+        "<p><b>Ваш ресурс:</b> вы доводите до конца и держите слово. Ломать это не нужно — к нему "+
+        "добавляется умение замечать раньше.</p>",
+      cta:"Если хочется разобраться, откуда взялась эта привычка, и научиться замечать сигналы раньше — "+
+          "начните с консультации или короткой практики."
+    },
+    X:{
+      name:"«Живу по чужим ожиданиям»",
+      tag:"ваша главная точка потери опоры — своё желание",
+      sub:"На вопрос «чего ты хочешь?» первым приходит ответ «а что надо?».",
+      body:
+        "<p>Знакомо: на вопрос «чего ты хочешь?» первым приходит ответ «чего не хочу» — или «а что "+
+        "надо?». Это не отсутствие желаний. Скорее, привычка сверяться с ожиданиями других раньше, "+
+        "чем с собой, потому что так безопаснее и потому что когда-то это было единственным способом "+
+        "сохранить отношения.</p>"+
+        "<p>Что здесь обычно происходит: вы хорошо умеете понимать людей. Настолько хорошо, что "+
+        "собственные желания отходят на второй план и остаются невыясненными. Отсюда усталость от "+
+        "выбора, откладывание «для себя» и ощущение, что живёшь чужую жизнь по расписанию.</p>"+
+        "<h3 style=\"margin:20px 0 12px\">С чего начать — 3 шага</h3>"+
+        "<ol class=\"steps\">"+
+        "<li><b>Чего я хочу прямо сейчас?</b> — по мелочам: еда, пауза, температура в комнате, темп.</li>"+
+        "<li><b>Одно «я хочу» в день</b> вслух, даже если оно ни на что не влияет.</li>"+
+        "<li><b>Заметьте, что происходит в теле</b>, когда вы говорите «я хочу». Это главный индикатор.</li>"+
+        "</ol>"+
+        "<p><b>Ваш ресурс:</b> вы чувствительны к другим. Это основа контакта — из неё же вырастает "+
+        "чувствительность к себе.</p>",
+      cta:"Если хочется научиться выбирать себя без вины — начните с консультации или с курса «7 точек опоры»."
+    },
+    G:{
+      name:"«Не могу сказать нет»",
+      tag:"ваша главная точка потери опоры — границы",
+      sub:"Согласие даётся легче отказа, а потом вы носите это с собой.",
+      body:
+        "<p>Судя по ответам, «нет» даётся вам дороже, чем согласие. Вы соглашаетесь, чтобы не "+
+        "расстраивать, а потом носите это с собой: прокручиваете разговор, злитесь на себя. Это не "+
+        "про мягкость характера — это про привычку платить собой за спокойствие другого.</p>"+
+        "<p>Что здесь обычно происходит: граница есть, но она обнаруживается уже после того, как её "+
+        "перешли. Отсюда злость, которая не находит адресата, и накопление «нельзя было отказать».</p>"+
+        "<h3 style=\"margin:20px 0 12px\">С чего начать — 3 шага</h3>"+
+        "<ol class=\"steps\">"+
+        "<li><b>Фраза-заготовка на неделю:</b> «Мне нужно подумать, я отвечу позже». Это ещё не «нет», но уже пауза.</li>"+
+        "<li><b>Один отказ в неделю</b> там, где цена минимальна — не там, где страшно.</li>"+
+        "<li><b>После согласия, которое не подходило:</b> отметьте, что было в теле до и после.</li>"+
+        "</ol>"+
+        "<p><b>Ваш ресурс:</b> вы умеете быть рядом и договариваться. Границы не отменяют это — они "+
+        "делают его выносимым.</p>",
+      cta:"Если хочется разобрать, где именно теряется «нет», — подойдёт консультация или практика по границам."
+    },
+    O:{
+      name:"«Всё сама»",
+      tag:"ваша главная точка потери опоры — просить и опираться",
+      sub:"Надёжнее всего — вы сами, поэтому в трудный момент вы не звоните никому.",
+      body:
+        "<p>Похоже, надёжнее всего для вас — вы сами. Помощь просить неловко, поддержку принимать "+
+        "трудно, и в трудный момент вы не звоните никому. Это делает вас сильной — и одновременно "+
+        "делает так, что справляться приходится в одиночку всегда, даже когда можно иначе.</p>"+
+        "<p>Что здесь обычно происходит: вы не проверяете, что будет, если попросить, — вы просто не "+
+        "просите. Так поддержка остаётся непроверенной гипотезой.</p>"+
+        "<h3 style=\"margin:20px 0 12px\">С чего начать — 3 шага</h3>"+
+        "<ol class=\"steps\">"+
+        "<li><b>Одна маленькая просьба в неделю</b> — такая, отказ по которой ничего не разрушит.</li>"+
+        "<li><b>Заметьте, что происходит в теле</b>, когда просите. Это важнее результата.</li>"+
+        "<li><b>Один раз примите помощь</b>, не «отрабатывая» её.</li>"+
+        "</ol>"+
+        "<p><b>Ваш ресурс:</b> вы надёжны и самостоятельны. Задача не в том, чтобы стать зависимой, "+
+        "а в том, чтобы опора была не только внутри.</p>",
+      cta:"Если хочется тренировать это в безопасном контакте — подойдёт консультация или групповая практика."
+    }
+  };
+
+  var EVEN = {
+    name:"«Ровно»",
+    tag:"выраженной потери опоры по этому тесту не видно",
+    sub:"Вы неплохо слышите себя — и это уже ресурс.",
+    body:
+      "<p>Похоже, вы неплохо слышите себя: замечаете усталость, умеете отказывать, просите о помощи. "+
+      "Это не значит, что всё идеально, — значит, что ваша опора сейчас не в дефиците.</p>"+
+      "<p>Смысл теста — не найти проблему, а увидеть, где вы устойчивы. Если хотите, возьмите самое "+
+      "слабое место из четырёх и посмотрите на него отдельно.</p>"+
+      "<p>Вопрос, который обычно оказывается важнее баллов: <b>где вы сейчас выбираете себя, а где "+
+      "пока нет?</b></p>",
+    cta:"Если хочется разобрать это с кем-то — можно начать с консультации; если пока нет, заберите бесплатное аудио «Безопасное место»."
+  };
+
+  // ---------------------------------------------------------------- состояние
+  var idx = 0;
+  var answers = new Array(QUESTIONS.length).fill(null);
+
+  var $ = function(id){ return document.getElementById(id); };
+  var screens = {start:$("screen-start"), quiz:$("screen-quiz"), result:$("screen-result")};
+
+  function show(name){
+    Object.keys(screens).forEach(function(k){
+      screens[k].classList.toggle("hide", k !== name);
+    });
+    window.scrollTo({top:0, behavior:"instant" in window ? "instant" : "auto"});
+  }
+
+  function renderQuestion(){
+    var q = QUESTIONS[idx];
+    $("counter").textContent = (idx+1) + " / " + QUESTIONS.length;
+    $("bar").style.width = Math.round((idx) / QUESTIONS.length * 100) + "%";
+    $("qtext").textContent = q.text;
+
+    var box = $("answers");
+    box.innerHTML = "";
+    SCALE.forEach(function(s){
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "ans" + (answers[idx] === s.v ? " sel" : "");
+      b.innerHTML = "<b>" + s.v + "</b><span>" + s.label + "</span>";
+      b.addEventListener("click", function(){ pick(s.v); });
+      box.appendChild(b);
+    });
+    $("btn-back").style.visibility = idx === 0 ? "hidden" : "visible";
+  }
+
+  function pick(v){
+    answers[idx] = v;
+    if (idx < QUESTIONS.length - 1){
+      idx += 1;
+      renderQuestion();
+    } else {
+      $("bar").style.width = "100%";
+      finish();
+    }
+  }
+
+  function score(){
+    var sum = {T:0, X:0, G:0, O:0}, count = {T:0, X:0, G:0, O:0};
+    QUESTIONS.forEach(function(q, i){
+      var v = answers[i] == null ? 0 : answers[i];
+      sum[q.line] += v;
+      count[q.line] += 3;
+    });
+    return sum;
+  }
+
+  function finish(){
+    var sum = score();
+    var order = ["T","X","G","O"].sort(function(a,b){ return sum[b] - sum[a]; });
+    var top = order[0], low = order[3];
+    var maxScore = Math.max.apply(null, order.map(function(k){ return sum[k]; }));
+
+    var profile;
+    if (maxScore <= 3){
+      profile = EVEN;
+    } else {
+      profile = PROFILES[top];
+    }
+
+    // баллы
+    var linesBox = $("lines");
+    linesBox.innerHTML = "";
+    order.forEach(function(k){
+      var row = document.createElement("div");
+      row.className = "line-row" + (k === low && maxScore > 3 ? " strong" : "");
+      row.innerHTML =
+        "<span>" + LINE_NAMES[k] + (k === top && maxScore > 3 ? " — ведущая" : "") +
+          (k === low && maxScore > 3 ? " — ваш ресурс" : "") + "</span>" +
+        "<span class='val'>" + sum[k] + " / 9</span>" +
+        "<span class='bar'><i style='width:" + Math.round(sum[k]/9*100) + "%'></i></span>";
+      linesBox.appendChild(row);
+    });
+
+    $("res-name").textContent = profile.name;
+    $("res-tag").textContent = profile.tag;
+    $("res-sub").textContent = profile.sub;
+    $("res-body").innerHTML = profile.body;
+
+    var noteText = maxScore <= 3
+      ? "Все линии в пределах 0–4 баллов: дефицита опоры тест не показывает."
+      : "Ведущая линия — " + LINE_NAMES[top] + " (" + sum[top] + " из 9). Наименьшая — " +
+        LINE_NAMES[low] + " (" + sum[low] + "): там опора уже есть — на неё можно опираться.";
+    $("res-note").textContent = noteText;
+
+    $("res-cta-text").textContent = profile.cta;
+    show("result");
+  }
+
+  // ---------------------------------------------------------------- события
+  $("btn-start").addEventListener("click", function(){
+    idx = 0;
+    answers = new Array(QUESTIONS.length).fill(null);
+    show("quiz");
+    renderQuestion();
+  });
+
+  $("btn-back").addEventListener("click", function(){
+    if (idx > 0){ idx -= 1; renderQuestion(); }
+  });
+
+  $("btn-print").addEventListener("click", function(){ window.print(); });
+
+  $("btn-restart").addEventListener("click", function(){
+    idx = 0;
+    answers = new Array(QUESTIONS.length).fill(null);
+    show("start");
+  });
+
+  // клавиатура: 0–3 и стрелки
+  document.addEventListener("keydown", function(e){
+    if (screens.quiz.classList.contains("hide")) return;
+    if (["0","1","2","3"].indexOf(e.key) > -1){
+      pick(parseInt(e.key, 10));
+    } else if (e.key === "ArrowLeft" && idx > 0){
+      idx -= 1; renderQuestion();
+    }
+  });
+})();
+</script>
+</body>
+</html>
